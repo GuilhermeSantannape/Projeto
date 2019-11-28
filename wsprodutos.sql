@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Nov-2019 às 16:13
+-- Tempo de geração: 28-Nov-2019 às 17:02
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.3.9
 
@@ -34,6 +34,19 @@ CREATE TABLE `animal` (
   `id_raca` int(11) NOT NULL,
   `dta_nasc` date DEFAULT NULL,
   `sexo` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `consulta`
+--
+
+CREATE TABLE `consulta` (
+  `id_consult` int(11) NOT NULL,
+  `dta_consult` date NOT NULL,
+  `id_pessoa` varchar(50) NOT NULL,
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
