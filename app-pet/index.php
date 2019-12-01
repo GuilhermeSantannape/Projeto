@@ -16,5 +16,14 @@ $app->group('/api/produtos', function(){
 })
 ->add('UsuarioController:validarToken');
 
+$app->group('/api/animais', function(){
+    $this->get('','AnimalController:listar');
+    $this->post('','AnimalController:inserir');
+    $this->get('/{id:[0-9]+}','AnimalController:buscarPorId');
+    $this->put('/{id:[0-9]+}','AnimalController:atualizar');
+    $this->delete('/{id:[0-9]+}','AnimalController:deletar');
+})
+;
+
 $app->run();
 ?>
