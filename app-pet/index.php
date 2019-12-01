@@ -22,8 +22,8 @@ $app->group('/api/animais', function(){
     $this->get('/{id:[0-9]+}','AnimalController:buscarPorId');
     $this->put('/{id:[0-9]+}','AnimalController:atualizar');
     $this->delete('/{id:[0-9]+}','AnimalController:deletar');
-});
-
+})
+;
 
 $app->run();
 ?>
