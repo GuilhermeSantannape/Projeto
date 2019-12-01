@@ -8,7 +8,7 @@ body.onload = function () {
     carregarAnimais();
 }
 
-var form = document.querySelector("#formulario_animais");
+var form = document.querySelector("#formulario");
 
 form.onsubmit = function(event){
     event.preventDefault();
@@ -138,7 +138,7 @@ function montarTabela(animais) {
     str+= "<table>";
     str+= "<tr>";
     str+= "<th>Nome</th>";
-    str+= "<th>Raca</th>";
+    str+= "<th>Raça</th>";
     str+= "<th>Data de Nascimento</th>";
     str+= "<th>Sexo</th>";
     str+= "<th colspan='2'>Ações</th>";
