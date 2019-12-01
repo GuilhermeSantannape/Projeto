@@ -12,27 +12,27 @@
             $comando->bindParam(":dta_nasc",$animal->dta_nasc);
             $comando->bindParam(":sexo",$animal->sexo);
             $comando->execute();
-            $animal->id = $pdo->lastInsertId();
+            $animal->id_animal = $pdo->lastInsertid_animal();
             return $animal;
         }
 
-        public function deletar($id) {
-            $qDeletar = "DELETE from animal WHERE id=:id";            
+        public function deletar($id_animal) {
+            $qDeletar = "DELETE from animal WHERE id_animal=:id_animal";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qDeletar);
-            $comando->bindParam(":id",$id);
+            $comando->bindParam(":id_animal",$id_animal);
             $comando->execute();
         }
 
         public function atualizar(Animal $animal) {
-            $qAtualizar = "UPDATE animal SET desc_animal=:desc_animal, id_raca=:id_raca, dta_nasc=:dta_nasc, sexo=:sexo WHERE id=:id";            
+            $qAtualizar = "UPDATE animal SET desc_animal=:desc_animal, id_raca=:id_raca, dta_nasc=:dta_nasc, sexo=:sexo WHERE id_animal=:id_animal";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qAtualizar);
             $comando->bindParam(":desc_animal",$animal->desc_animal);
             $comando->bindParam(":id_raca",$animal->id_raca);
             $comando->bindParam(":dta_nasc",$animal->dta_nasc);
             $comando->bindParam(":sexo",$animal->sexo);
-            $comando->bindParam(":id",$animal->id);
+            $comando->bindParam(":id_animal",$animal->id_animal);
             $comando->execute();        
         }
 
@@ -43,19 +43,19 @@
     		$comando->execute();
             $animais=array();	
 		    while($row = $comando->fetch(PDO::FETCH_OBJ)){
-			    $animais[] = new Animal($row->id,$row->desc_animal,$row->id_raca,$row->dta_nasc,$row->sexo);
+			    $animais[] = new Animal($row->id_animal,$row->desc_animal,$row->id_raca,$row->dta_nasc,$row->sexo);
             }
             return $animais;
         }
 
-        public function buscarPorId($id) {
- 		    $query = 'SELECT * FROM animal WHERE id=:id';		
+        public function buscarPorid_animal($id_animal) {
+ 		    $query = 'SELECT * FROM animal WHERE id_animal=:id_animal';		
             $pdo = PDOFactory::getConexao(); 
 		    $comando = $pdo->prepare($query);
-		    $comando->bindParam ('id', $id);
+		    $comando->bindParam ('id_animal', $id_animal);
 		    $comando->execute();
 		    $result = $comando->fetch(PDO::FETCH_OBJ);
-            return new Animal($result->id,$result->desc_animal,$result->id_raca,$result->dta_nasc,$result->sexo);
+            return new Animal($result->id_animal,$result->desc_animal,$result->id_raca,$result->dta_nasc,$result->sexo);
         }
     }
 ?>

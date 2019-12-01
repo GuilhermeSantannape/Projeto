@@ -1,6 +1,6 @@
 <?php
     class Animal {
-        public $id;
+        public $id_animal;
         public $desc_animal;
         public $id_raca;
         public $dta_nasc;
