@@ -23,7 +23,7 @@ $app->group('/api/animais', function(){
     $this->put('/{id:[0-9]+}','AnimalController:atualizar');
     $this->delete('/{id:[0-9]+}','AnimalController:deletar');
 })
-->add('UsuarioController:validarToken');
+;
 
 $app->run();
 ?>
