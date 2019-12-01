@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Nov-2019 às 17:02
+-- Tempo de geração: 01-Dez-2019 às 19:46
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.3.9
 
@@ -25,15 +25,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `animal`
+-- Estrutura da tabela `animais`
 --
 
-CREATE TABLE `animal` (
+CREATE TABLE `animais` (
   `id_animal` int(11) NOT NULL,
-  `desc_animal` varchar(50) NOT NULL,
+  `desc_aninal` varchar(50) NOT NULL,
   `id_raca` int(11) NOT NULL,
-  `dta_nasc` date DEFAULT NULL,
-  `sexo` varchar(50) DEFAULT NULL
+  `dta_nasc` int(11) NOT NULL,
+  `sexo` varchar(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -115,6 +115,14 @@ CREATE TABLE `raca` (
   `id_tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `raca`
+--
+
+INSERT INTO `raca` (`id_raca`, `desc`, `id_tipo`) VALUES
+(1, 'labrador', 1),
+(2, 'ragdoll', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -123,8 +131,16 @@ CREATE TABLE `raca` (
 
 CREATE TABLE `tipo_animal` (
   `id_tipo` int(11) NOT NULL,
-  `desc_tipo` int(11) NOT NULL
+  `desc_tipo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tipo_animal`
+--
+
+INSERT INTO `tipo_animal` (`id_tipo`, `desc_tipo`) VALUES
+(1, 'cachorro'),
+(2, 'gato');
 
 -- --------------------------------------------------------
 
@@ -151,18 +167,16 @@ INSERT INTO `usuarios` (`id`, `nome`, `login`, `senha`) VALUES
 --
 
 --
--- Índices para tabela `animal`
+-- Índices para tabela `animais`
 --
-ALTER TABLE `animal`
-  ADD PRIMARY KEY (`id_animal`),
-  ADD KEY `Fk_raca` (`id_raca`);
+ALTER TABLE `animais`
+  ADD PRIMARY KEY (`id_animal`);
 
 --
 -- Índices para tabela `pessoa`
 --
 ALTER TABLE `pessoa`
-  ADD PRIMARY KEY (`id_pessoa`),
-  ADD KEY `Fk` (`id_animal`);
+  ADD PRIMARY KEY (`id_pessoa`);
 
 --
 -- Índices para tabela `produtos`
@@ -194,6 +208,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de tabela `animais`
+--
+ALTER TABLE `animais`
+  MODIFY `id_animal` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
@@ -203,35 +223,30 @@ ALTER TABLE `pessoa`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `raca`
 --
 ALTER TABLE `raca`
-  MODIFY `id_raca` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_raca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `tipo_animal`
 --
 ALTER TABLE `tipo_animal`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restrições para despejos de tabelas
 --
 
 --
--- Limitadores para a tabela `animal`
---
-ALTER TABLE `animal`
-  ADD CONSTRAINT `Fk_raca` FOREIGN KEY (`id_raca`) REFERENCES `raca` (`id_raca`);
-
---
 -- Limitadores para a tabela `pessoa`
 --
 ALTER TABLE `pessoa`
-  ADD CONSTRAINT `Fk` FOREIGN KEY (`id_animal`) REFERENCES `animal` (`id_animal`);
+  ADD CONSTRAINT `Fk` FOREIGN KEY (`id_animal`) REFERENCES `animal` (`id_animal`),
+  ADD CONSTRAINT `fk_animal` FOREIGN KEY (`id_animal`) REFERENCES `animal` (`id_animal`);
 
 --
 -- Limitadores para a tabela `raca`
