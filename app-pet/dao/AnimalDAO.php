@@ -4,7 +4,7 @@
     {
 
         public function inserir(Animal $animal) {
-            $qInserir = "INSERT INTO animal(desc_animal,id_raca,dta_nasc,sexo) VALUES (:desc_animal,:id_raca,:dta_nasc,:sexo)";            
+            $qInserir = "INSERT INTO animaisanimais(desc_animal,id_raca,dta_nasc,sexo) VALUES (:desc_animal,:id_raca,:dta_nasc,:sexo)";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qInserir);
             $comando->bindParam(":desc_animal",$animal->desc_animal);
@@ -17,7 +17,7 @@
         }
 
         public function deletar($id_animal) {
-            $qDeletar = "DELETE from animal WHERE id_animal=:id_animal";            
+            $qDeletar = "DELETE from animais WHERE id_animal=:id_animal";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qDeletar);
             $comando->bindParam(":id_animal",$id_animal);
@@ -25,7 +25,7 @@
         }
 
         public function atualizar(Animal $animal) {
-            $qAtualizar = "UPDATE animal SET desc_animal=:desc_animal, id_raca=:id_raca, dta_nasc=:dta_nasc, sexo=:sexo WHERE id_animal=:id_animal";            
+            $qAtualizar = "UPDATE animais SET desc_animal=:desc_animal, id_raca=:id_raca, dta_nasc=:dta_nasc, sexo=:sexo WHERE id_animal=:id_animal";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qAtualizar);
             $comando->bindParam(":desc_animal",$animal->desc_animal);
@@ -37,7 +37,7 @@
         }
 
         public function listar() {
-		    $query = 'SELECT * FROM animal';
+		    $query = 'SELECT * FROM animais';
     		$pdo = PDOFactory::getConexao();
 	    	$comando = $pdo->prepare($query);
     		$comando->execute();
@@ -49,7 +49,7 @@
         }
 
         public function buscarPorid_animal($id_animal) {
- 		    $query = 'SELECT * FROM animal WHERE id_animal=:id_animal';		
+ 		    $query = 'SELECT * FROM animais WHERE id_animal=:id_animal';		
             $pdo = PDOFactory::getConexao(); 
 		    $comando = $pdo->prepare($query);
 		    $comando->bindParam ('id_animal', $id_animal);
