@@ -1,4 +1,7 @@
 <?php
+include_once './class/Produto.php';
+require_once "db/PDOFactory.php";
+require "./vendor/autoload.php";
 
 class UsuarioDAO {
 

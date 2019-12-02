@@ -1,4 +1,7 @@
 <?php
+include_once './class/Produto.php';
+require_once "db/PDOFactory.php";
+require "./vendor/autoload.php";
 
     class ProdutoDAO
     {
@@ -25,7 +28,7 @@
         }
 
         public function atualizar(Produto $produto) {
-            $qAtualizar = "UPDATE produto SET nome=:nome, imagem=:imagem, descricao=:descricao, uso=:uso WHERE id=:id";            
+            $qAtualizar = "UPDATE produtos SET nome=:nome, imagem=:imagem, descricao=:descricao, uso=:uso WHERE id=:id";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qAtualizar);
             $comando->bindParam(":nome",$produto->nome);
