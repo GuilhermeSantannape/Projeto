@@ -60,6 +60,7 @@ function editarAnimal(id_animal) {
         if (this.readyState === 4 && this.status === 200) {
             var animal = JSON.parse(this.responseText);
             document.querySelector("#txtnome").value = animal.desc_animal;
+            document.querySelector('#cmbRacas').selectedIndex = animal.id_raca
             document.querySelector("#txtdata").value = animal.dta_nasc;
             document.querySelector("#txtsexo").value = animal.sexo;
             document.querySelector("#txtid_animal").value = id_animal;
@@ -135,6 +136,7 @@ function carregarAnimais() {
     xhttp.send();
 }
 
+//Funçao para carregar as racas do banco
 function carregarRacas() {
 
     var xhttp = new XMLHttpRequest();
@@ -151,6 +153,7 @@ function carregarRacas() {
     xhttp.send();
 }
 
+//Funçaozinha pra montar a combobox
 function montarComboBox(racas) {
     for(var i in racas){
     var opt0 = document.createElement("option");
