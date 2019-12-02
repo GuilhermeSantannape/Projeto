@@ -1,5 +1,9 @@
 <?php
 
+require_once './class/Produto.php';
+require_once './dao/ProdutoDAO.php';
+require "./vendor/autoload.php";
+
     class ProdutoController{
         
         public function listar($request, $response,$args) {

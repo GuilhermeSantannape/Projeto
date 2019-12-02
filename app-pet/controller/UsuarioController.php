@@ -1,4 +1,8 @@
 <?php
+require_once './class/Produto.php';
+require_once './dao/ProdutoDAO.php';
+require "./vendor/autoload.php";
+
 use \Firebase\JWT\JWT;
 
 class UsuarioController {
