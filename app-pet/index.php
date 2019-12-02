@@ -35,5 +35,23 @@ $app->group('/api/raca', function(){
 })
 ;
 
+$app->group('/api/especie', function(){
+    $this->get('','EspecieController:listar');
+    $this->get('/{id:[0-9]+}','EspecieController:buscarPorId');
+ 
+})
+;
+
+$app->group('/api/cliente', function(){
+    $this->get('','ClienteController:listar');
+    $this->post('','ClienteController:inserir');
+    $this->get('/{id:[0-9]+}','ClienteController:buscarPorId');
+    $this->put('/{id:[0-9]+}','ClienteController:atualizar');
+    $this->delete('/{id:[0-9]+}','ClienteController:deletar');
+})
+;
+
+
+
 $app->run();
 ?>
