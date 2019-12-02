@@ -1,5 +1,6 @@
 <?php
 // inclui o cabeçalho com requires e configs
+
 require_once "header.php";
 
 $app = new \Slim\App($config);
@@ -14,7 +15,7 @@ $app->group('/api/produtos', function(){
     $this->put('/{id:[0-9]+}','ProdutoController:atualizar');
     $this->delete('/{id:[0-9]+}','ProdutoController:deletar');
 })
-->add('UsuarioController:validarToken');
+;
 
 $app->group('/api/animais', function(){
     $this->get('','AnimalController:listar');
