@@ -34,8 +34,9 @@ function enviarAnimal(animal){
 
     
     xhttp.onreadystatechange = function () {
+       
         if (this.readyState === 4 && this.status === 201) {
-            console.log("Response recebid_animalo!");
+            console.log("Response recebid_animal!");
             limparFormulario();
             carregarAnimais();
         }

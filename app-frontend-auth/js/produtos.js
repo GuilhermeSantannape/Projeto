@@ -105,6 +105,7 @@ function atualizarDadosProduto(produto, id){
     xhttp.setRequestHeader("Content-Type","application/json");
     // AUTH: realiza a autorização com token
     xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('token'));
+    alert(JSON.stringify(produto));
     xhttp.send(JSON.stringify(produto));
 }
 
