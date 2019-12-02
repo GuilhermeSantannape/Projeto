@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Dez-2019 às 19:46
+-- Tempo de geração: 02-Dez-2019 às 02:45
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.3.9
 
@@ -30,11 +30,30 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `animais` (
   `id_animal` int(11) NOT NULL,
-  `desc_aninal` varchar(50) NOT NULL,
+  `desc_animal` varchar(50) NOT NULL,
   `id_raca` int(11) NOT NULL,
-  `dta_nasc` int(11) NOT NULL,
+  `dta_nasc` date NOT NULL,
   `sexo` varchar(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `animais`
+--
+
+INSERT INTO `animais` (`id_animal`, `desc_animal`, `id_raca`, `dta_nasc`, `sexo`) VALUES
+(1, 'belinha1', 3, '2019-12-01', 'M'),
+(2, 'belinha2', 1, '2019-12-01', 'M'),
+(3, 'GUILHERME PEREIRA SANTANNA3', 3, '2019-12-01', 'F'),
+(4, 'a4', 0, '2019-12-01', 'M'),
+(5, 'a5', 0, '2019-12-01', 'M'),
+(6, 'barara]', 0, '0000-00-00', ''),
+(7, 'GUILHERME P', 0, '2019-12-01', 't'),
+(8, 'perna curta', 1, '1994-05-25', 'a'),
+(9, 'madona', 2, '2019-12-01', 'F'),
+(10, 'chuck', 2, '2019-12-01', 'M'),
+(11, 'budemina', 2, '2019-12-01', 'M'),
+(12, 'GUILHERME PEREIRA SANTANNA', 1, '1994-05-25', 'a'),
+(13, 'GUILHERME ', 0, '2019-12-04', 'a');
 
 -- --------------------------------------------------------
 
@@ -93,7 +112,7 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `imagem`, `descricao`, `uso`) VALUES
-(1, 'Modelo Ragon WZ', 'img/motor-1.jpg', 'Cabeçotes individuais com 4 válvulas por cilindro', 'veicular'),
+(1, 'Modelo Ragon WZasdd', 'img/motor-1.jpg', 'Cabeçotes individuais com 4 válvulas por cilindro', 'veicular'),
 (2, 'Modelo Ragon TY', 'img/motor-2.jpg', 'Cabeçotes individuais com 4 válvulas por cilindro', 'veicular'),
 (3, 'Modelo Delta', 'img/motor-3.jpg', 'Cabeçotes individuais com 6 válvulas por cilindro', 'veicular, maritimo'),
 (4, 'Modelo Dyna', 'img/motor-1.jpg', 'Cabeçotes individuais com 4 válvulas por cilindro', 'agricola'),
@@ -101,7 +120,9 @@ INSERT INTO `produtos` (`id`, `nome`, `imagem`, `descricao`, `uso`) VALUES
 (6, 'Modelo Tork JA', 'img/motor-3.jpg', 'Cabeçotes individuais com 4 válvulas por cilindro', 'industrial'),
 (7, 'Modelo Combo Alfa', 'img/motor-1.jpg', 'Cabeçotes individuais com 4 válvulas por cilindro', 'maritimo'),
 (8, 'Modelo Combo Beta', 'img/motor-2.jpg', 'Cabeçotes individuais com 4 válvulas por cilindro', 'maritimo'),
-(9, 'GUILHERME PEREIRA SANTANNA', 'asdas', 'asd', 'asd');
+(9, 'GUILHERME PEREIRA SANTANNA', 'asdas', 'asd', 'asd'),
+(11, 'GUILHERME PEREIRA SANTANNA', 's', 's', 's'),
+(12, 'Modelo Ragon WZ', 'img/motor-1.jpg', 'Cabeçotes individuais com 4 válvulas por cilindro', 'veicular');
 
 -- --------------------------------------------------------
 
@@ -211,7 +232,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `animais`
 --
 ALTER TABLE `animais`
-  MODIFY `id_animal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_animal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `pessoa`
@@ -223,7 +244,7 @@ ALTER TABLE `pessoa`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `raca`
@@ -236,23 +257,6 @@ ALTER TABLE `raca`
 --
 ALTER TABLE `tipo_animal`
   MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `pessoa`
---
-ALTER TABLE `pessoa`
-  ADD CONSTRAINT `Fk` FOREIGN KEY (`id_animal`) REFERENCES `animal` (`id_animal`),
-  ADD CONSTRAINT `fk_animal` FOREIGN KEY (`id_animal`) REFERENCES `animal` (`id_animal`);
-
---
--- Limitadores para a tabela `raca`
---
-ALTER TABLE `raca`
-  ADD CONSTRAINT `id_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_animal` (`id_tipo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
