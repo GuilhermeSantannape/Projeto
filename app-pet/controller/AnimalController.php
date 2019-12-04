@@ -11,9 +11,9 @@
         }
 
         public function buscarPorId($request, $response, $args) {
-            $id = (int) $args['id_animal'];
+            $id_animal = (int) $args['id'];
             $dao = new AnimalDAO;    
-            $animal = $dao->buscarPorId($id);  
+            $animal = $dao->buscarPorId($id_animal);  
             $response = $response->withJson($animal);
             $response = $response->withHeader('Content-type', 'application/json');    
             return $response;
@@ -31,9 +31,9 @@
         }
         
         public function atualizar($request, $response, $args) {
-            $id = (int) $args['id_animal'];
+            $id_animal = (int) $args['id'];
             $var = $request->getParsedBody();
-            $animal = new Animal($id, $var['desc_animal'], $var['id_raca'], $var['dta_nasc'], $var['sexo']);
+            $animal = new Animal($id_animal, $var['desc_animal'], $var['id_raca'], $var['dta_nasc'], $var['sexo']);
             $dao = new AnimalDAO;    
             $dao->atualizar($animal);
             $response = $response->withJson($animal);
@@ -42,10 +42,10 @@
         }
 
         public function deletar($request, $response, $args) {
-            $id = (int) $args['id_animal'];
+            $id_animal = (int) $args['id'];
             $dao = new AnimalDAO; 
-            $animal = $dao->buscarPorId($id);   
-            $dao->deletar($id);
+            $animal = $dao->buscarPorId($id_animal);   
+            $dao->deletar($id_animal);
             $response = $response->withJson($animal);
             $response = $response->withHeader('Content-type', 'application/json');    
             return $response;

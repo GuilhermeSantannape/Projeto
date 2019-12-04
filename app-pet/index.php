@@ -1,5 +1,6 @@
 <?php
 // inclui o cabeçalho com requires e configs
+
 require_once "header.php";
 
 $app = new \Slim\App($config);
@@ -14,7 +15,7 @@ $app->group('/api/produtos', function(){
     $this->put('/{id:[0-9]+}','ProdutoController:atualizar');
     $this->delete('/{id:[0-9]+}','ProdutoController:deletar');
 })
-->add('UsuarioController:validarToken');
+;
 
 $app->group('/api/animais', function(){
     $this->get('','AnimalController:listar');
@@ -24,6 +25,40 @@ $app->group('/api/animais', function(){
     $this->delete('/{id:[0-9]+}','AnimalController:deletar');
 })
 ;
+
+$app->group('/api/raca', function(){
+    $this->get('','RacaController:listar');
+    $this->post('','RacaController:inserir');
+    $this->get('/{id:[0-9]+}','RacaController:buscarPorId');
+    $this->put('/{id:[0-9]+}','RacaController:atualizar');
+    $this->delete('/{id:[0-9]+}','RacaController:deletar');
+})
+;
+
+$app->group('/api/especie', function(){
+    $this->get('','EspecieController:listar');
+    $this->get('/{id:[0-9]+}','EspecieController:buscarPorId');
+ 
+})
+;
+
+$app->group('/api/cliente', function(){
+    $this->get('','ClienteController:listar');
+    $this->post('','ClienteController:inserir');
+    $this->get('/{id:[0-9]+}','ClienteController:buscarPorId');
+    $this->put('/{id:[0-9]+}','ClienteController:atualizar');
+    $this->delete('/{id:[0-9]+}','ClienteController:deletar');
+})
+;
+
+$app->group('/api/usuario_token', function(){
+    
+    $this->post('','Usuario_tokenController:inserir');
+    $this->get('/{id:[0-9]+}','Usuario_tokenController:buscarPorId');
+    $this->delete('/{id:[0-9]+}','Usuario_tokenController:deletar');
+})
+;
+
 
 $app->run();
 ?>

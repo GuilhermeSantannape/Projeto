@@ -39,7 +39,7 @@ function buscarToken() {
                     // armazena o token em uma session storage
                     sessionStorage.setItem('token', retorno.token);
                     // redireciona para a página de CRUD
-                    window.location.href = "animais.html";
+                    window.location.href = "produtos.html";
                 }
             }
         };

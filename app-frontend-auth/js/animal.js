@@ -1,11 +1,20 @@
 
 var url = "http://localhost/Projeto/app-pet/api/animais";
 
+var urlRacas = "http://localhost/Projeto/app-pet/api/raca";
+var urlEspecies = "http://localhost/Projeto/app-pet/api/especie";
+
 var body = document.querySelector("body");
+
+var comboEspecie = document.getElementById("cmbespecie");
+var comboRacas = document.getElementById("cmbRacas");
 
 body.onload = function () {
 
     carregarAnimais();
+    carregarRacas();
+    carregarEspecies();
+
 }
 
 var form = document.querySelector("#formulario");
@@ -16,7 +25,8 @@ form.onsubmit = function(event){
     var animal = {};
  
     animal.desc_animal = document.querySelector("#txtnome").value;
-    animal.id_raca = document.querySelector("#txtraca").value;
+    animal.id_tipo = comboEspecie.selectedIndex;
+    animal.id_raca = comboRacas.selectedIndex;
     animal.dta_nasc = document.querySelector("#txtdata").value;
     animal.sexo = document.querySelector("#txtsexo").value;
 
@@ -32,10 +42,10 @@ function enviarAnimal(animal){
 
     var xhttp = new XMLHttpRequest();
 
-    
     xhttp.onreadystatechange = function () {
+       
         if (this.readyState === 4 && this.status === 201) {
-            console.log("Response recebid_animalo!");
+            console.log("Response recebid_animal!");
             limparFormulario();
             carregarAnimais();
         }
@@ -55,7 +65,8 @@ function editarAnimal(id_animal) {
         if (this.readyState === 4 && this.status === 200) {
             var animal = JSON.parse(this.responseText);
             document.querySelector("#txtnome").value = animal.desc_animal;
-            document.querySelector("#txtraca").value =  animal.id_raca;
+            document.querySelector('#cmbespecie').selectedIndex = animal.id_tipo
+            document.querySelector('#cmbRacas').selectedIndex = animal.id_raca
             document.querySelector("#txtdata").value = animal.dta_nasc;
             document.querySelector("#txtsexo").value = animal.sexo;
             document.querySelector("#txtid_animal").value = id_animal;
@@ -104,7 +115,6 @@ function excluirAnimal(id_animal) {
 
 function limparFormulario(){
     document.querySelector("#txtnome").value="";
-    document.querySelector("#txtraca").value="";
     document.querySelector("#txtdata").value="";
     document.querySelector("#txtsexo").value="";  
     document.querySelector("#txtid_animal").value="";     
@@ -130,6 +140,61 @@ function carregarAnimais() {
     xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('token'));
 
     xhttp.send();
+}
+
+//Funçao para carregar as racas do banco
+function carregarRacas() {
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            montarComboBoxRaca(JSON.parse(this.responseText));
+        }
+    };
+    xhttp.open("GET", urlRacas, true);
+
+    xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('token'));
+
+    xhttp.send();
+}
+
+
+//Funçaozinha pra montar a combobox raca
+function montarComboBoxRaca(racas) {
+    for(var i in racas){
+    var opt0 = document.createElement("option");
+    opt0.value = toString(i);
+    opt0.text = racas[i].desc_raca;
+    comboRacas.add(opt0, comboRacas.options[i]);
+    }
+}
+
+//carregar especie
+function carregarEspecies() {
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            montarComboBoxEspecie(JSON.parse(this.responseText));
+        }
+    };
+
+    xhttp.open("GET", urlEspecies, true);
+
+    xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('token'));
+
+    xhttp.send();
+}
+//Funçaozinha pra montar a combobox raca
+function montarComboBoxEspecie(especie) {
+    for(var i in especie){
+    var opt0 = document.createElement("option");
+    opt0.value = toString(i);
+    opt0.text = especie[i].desc_tipo;
+    comboEspecie.add(opt0, comboEspecie.options[i]);
+    }
 }
 
 function montarTabela(animais) {
