@@ -51,6 +51,14 @@ $app->group('/api/cliente', function(){
 })
 ;
 
+$app->group('/api/consulta', function(){
+    $this->get('','ConsultaController:listar');
+    $this->post('','ConsultaController:inserir');
+    $this->get('/{id:[0-9]+}','ConsultaController:buscarPorId');
+    $this->put('/{id:[0-9]+}','ConsultaController:atualizar');
+    $this->delete('/{id:[0-9]+}','ConsultaController:deletar');
+})
+;
 
 
 $app->run();
