@@ -9,6 +9,7 @@ require_once 'class/Animal.php';
 require_once 'class/Raca.php';
 require_once 'class/Especie.php';
 require_once 'class/Cliente.php';
+require_once 'class/Usuario_token.php';
 
 // include de DAO
 include_once 'dao/ProdutoDAO.php';
@@ -17,6 +18,7 @@ include_once 'dao/AnimalDAO.php';
 include_once 'dao/RacaDAO.php';
 require_once 'dao/EspecieDAO.php';
 require_once 'dao/ClienteDAO.php';
+require_once 'dao/Usuario_TokenDAO.php';
 
 // includes de controllers
 require_once 'controller/ProdutoController.php';
@@ -25,6 +27,7 @@ require_once 'controller/AnimalController.php';
 require_once 'controller/RacaController.php';
 require_once 'controller/EspecieController.php';
 require_once 'controller/ClienteController.php';
+require_once 'controller/Usuario_TokenController.php';
 
 
 // include de autoload do Slim
