@@ -9,7 +9,7 @@ var body = document.querySelector("body");
 body.onload = function () {
     // Chamar a função de visualização dos dados
     // Método GET
-    carregarProdutos();
+    carregarCliente();
 }
 
 // Selecionando o elemento cujo ID é "formulario"
@@ -20,29 +20,33 @@ form.onsubmit = function(event){
     event.preventDefault();
  
     // Criação de um objeto JSON
-    var produto = {};
+    var cliente = {};
  
     // Cada atributo busca por JS o ID do input e associa ao valor digitado 
-    produto.nome = document.querySelector("#txtnome").value;
-    produto.imagem = document.querySelector("#txtimagem").value;
-    produto.descricao = document.querySelector("#txtdescricao").value;
-    produto.uso = document.querySelector("#txtuso").value;
+    cliente.nome = document.querySelector("#txtnome").value;
+    cliente.cpf = document.querySelector("#txtcpf").value;
+    cliente.sexo = document.querySelector("#txtsexo").value;
+    cliente.email = document.querySelector("#txtemail").value;
+    cliente.endereco = document.querySelector("#txtendereco").value;
+    cliente.numero = document.querySelector("#txtnumero").value;
+    cliente.complemente = document.querySelector("#txtcomplemente").value;
+    
     
     // Atributo ID só vai ter valor quando for um caso de EDIÇÃO (PUT)
     // Quando for um caso de CRIAÇÃO (POST) será nulo
-    var id = document.querySelector("#txtid").value;
+    var id_cliente = document.querySelector("#txtid_cliente").value;
     
     // Se o ID estiver vazio então é uma CRIAÇÃO (POST)
     // Se o ID *não* estiver vazio então é uma EDIÇÃO (PUT) e precisa do ID
-    if(id == "") 
-        enviarProduto(produto);
+    if(id_cliente == "") 
+        enviarCliente(cliente);
     else
-        atualizarDadosProduto(produto, id);
+        atualizarDadosCliente(cliente, id_cliente);
 }
 
 // Processo de inserção de dados digitados no formulário
 // Método POST
-function enviarProduto(produto){
+function enviarCliente(cliente){
     // Instancia a classe de requisições assíncronas (AJAX)
     var xhttp = new XMLHttpRequest();
 
@@ -51,7 +55,7 @@ function enviarProduto(produto){
         if (this.readyState === 4 && this.status === 201) {
             console.log("Response recebido!");
             limparFormulario();
-            carregarProdutos();
+            carregarCliente();
         }
     };
     xhttp.open("POST", url, true);
@@ -59,28 +63,32 @@ function enviarProduto(produto){
     xhttp.setRequestHeader("Content-Type","application/json");
     // AUTH: realiza a autorização com token
     xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('token'));
-    xhttp.send(JSON.stringify(produto));
+    xhttp.send(JSON.stringify(cliente));
 }
 
 // Busca os dados do registro atual para que sejam mostrados no 
 // formulário e posteriormente editados pelo usuário
 // Método GET{id}
-function editarProduto(id) {
+function editarCliente(id_cliente) {
 
     // Instancia a classe de requisições assíncronas (AJAX)
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            var produto = JSON.parse(this.responseText);
-            document.querySelector("#txtnome").value = produto.nome;
-            document.querySelector("#txtimagem").value =  produto.imagem;
-            document.querySelector("#txtdescricao").value = produto.descricao;
-            document.querySelector("#txtuso").value = produto.uso;
-            document.querySelector("#txtid").value = id;
+            var cliente = JSON.parse(this.responseText);
+            document.querySelector("#txtnome").value = cliente.nome;
+            document.querySelector("#txtcpf").value =  cliente.cpf;
+            document.querySelector("#txtsexo").value = cliente.sexo;
+            document.querySelector("#txtemail").value = cliente.email;
+            document.querySelector("#txtendereco").value = cliente.endereco;
+            document.querySelector("#txtnumero").value = cliente.numero;
+            document.querySelector("#txtcomplemente").value = cliente.complemente;
+            document.querySelector("#txtid_cliente").value = cliente.id_cliente;
+            
         }
     };
     // Concatena a URL padrão do Web Service com /id
-    xhttp.open("GET", url + "/" + id, true);
+    xhttp.open("GET", url + "/" + id_cliente, true);
     // AUTH: realiza a autorização com token
     xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('token'));
     xhttp.send();
@@ -88,7 +96,7 @@ function editarProduto(id) {
 
 // Edição dos dados no Web Service passando os dados e o ID
 // Método PUT 
-function atualizarDadosProduto(produto, id){
+function atualizarDadosCliente(cliente, id_cliente){
 
     // Instancia a classe de requisições assíncronas (AJAX)
     var xhttp = new XMLHttpRequest();
@@ -97,32 +105,32 @@ function atualizarDadosProduto(produto, id){
        if (this.readyState === 4 && this.status === 200) {            
             console.log("Response recebido!");
             limparFormulario();
-            carregarProdutos();
+            carregarCliente();
         }
     };
     // Concatena a URL padrão do Web Service com /id
-    xhttp.open("PUT", url + "/" + id, true);
+    xhttp.open("PUT", url + "/" + id_cliente, true);
     xhttp.setRequestHeader("Content-Type","application/json");
     // AUTH: realiza a autorização com token
     xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('token'));
-    alert(JSON.stringify(produto));
-    xhttp.send(JSON.stringify(produto));
+    alert(JSON.stringify(cliente));
+    xhttp.send(JSON.stringify(cliente));
 }
 
 // Procedimento de exclusão de dados via Web Service passando ID
 // Método DELETE 
-function excluirProduto(id) {
+function excluirCliente(id_cliente) {
 
     // Instancia a classe de requisições assíncronas (AJAX)
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             limparFormulario();
-            carregarProdutos();
+            carregarCliente();
         }
     };
     // Concatena a URL padrão do Web Servic com /id
-    xhttp.open("DELETE", url + "/" + id, true);
+    xhttp.open("DELETE", url + "/" + id_cliente, true);
 
     // AUTH: realiza a autorização com token
     xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('token'));
@@ -131,23 +139,27 @@ function excluirProduto(id) {
 
 function limparFormulario(){
     document.querySelector("#txtnome").value="";
-    document.querySelector("#txtimagem").value="";
-    document.querySelector("#txtdescricao").value="";
-    document.querySelector("#txtuso").value="";  
-    document.querySelector("#txtid").value="";     
+    document.querySelector("#txtcpf").value="";
+    document.querySelector("#txtsexo").value="";
+    document.querySelector("#txtemail").value="";
+    document.querySelector("#txtendereco").value="";
+    document.querySelector("#txtnumero").value="";
+    document.querySelector("#txtcomplemente").value="";
+     
+    document.querySelector("#txtid_cliente").value="";     
 }
 
 // Confirmação de exclusão do registro
-function confirmarExcluir(id) {
+function confirmarExcluir(id_cliente) {
     if(confirm("Tem certeza que deseja excluir este registro?"))
-        excluirProduto(id);
+         excluirCliente(id_cliente);
     else 
         false;
 }
 
 // Função para recuperação de dados do web service
 // Método GET e usar a função montarTabela com a estrutura JSON
-function carregarProdutos() {
+function carregarCliente() {
     // Instancia a classe de requisições assíncronas (AJAX)
     var xhttp = new XMLHttpRequest();
     // Etapa 3: quando a requisição dá uma resposta 
@@ -171,28 +183,36 @@ function carregarProdutos() {
 }
 
 // Recebe a estrutura JSON que veio a partir da requisição (GET)
-function montarTabela(produtos) {
+function montarTabela(clientes) {
 
     var str="";
     str+= "<table>";
     str+= "<tr>";
-    str+= "<th>Nome</th>";
-    str+= "<th>Imagem</th>";
-    str+= "<th>Descrição</th>";
-    str+= "<th>Uso</th>";
+    str+= "<th>nome</th>";
+    str+= "<th>cpf</th>";
+    str+= "<th>sexo</th>";
+    str+= "<th>email</th>";
+    str+= "<th>endereco</th>";
+    str+= "<th>numero</th>";
+    str+= "<th>complemente</th>";
     str+= "<th colspan='2'>Ações</th>";
     str+= "</tr>";
 
     // Iteração no JSON criando uma linha para cada registro
-    for(var i in produtos){
+    for(var i in clientes){
         str+="<tr>";
-        str+="<td>" + produtos[i].nome + "</td>";
-        str+="<td>" + produtos[i].imagem + "</td>";
-        str+="<td>" + produtos[i].descricao + "</td>";
-        str+="<td>" + produtos[i].uso + "</td>";
+        str+="<td>" + clientes[i].nome + "</td>";
+        str+="<td>" + clientes[i].cpf + "</td>";
+        str+="<td>" + clientes[i].sexo + "</td>";
+        str+="<td>" + clientes[i].email + "</td>";
+        str+="<td>" + clientes[i].endereco + "</td>";
+        str+="<td>" + clientes[i].numero + "</td>";
+        str+="<td>" + clientes[i].complemente + "</td>";
+        
+      
         // Construção de botões de ação para Edição e Exclusão passando o ID do registro
-        str+="<td onclick='editarProduto(" + produtos[i].id + ")' class='beditar'>Editar</a></td>";
-        str+="<td onclick='confirmarExcluir(" + produtos[i].id + ")' class='bexcluir'>Excluir</a></td>";
+        str+="<td onclick='editarCliente(" + clientes[i].id_cliente + ")' class='beditar'>Editar</a></td>";
+        str+="<td onclick='confirmarExcluir(" + clientes[i].id_cliente + ")' class='bexcluir'>Excluir</a></td>";
         str+="</tr>";
     } 
     str+= "</table>";

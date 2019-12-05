@@ -60,6 +60,13 @@ $app->group('/api/consulta', function(){
 })
 ;
 
+$app->group('/api/usuario_token', function(){
+    $this->post('','Usuario_tokenController:inserir');
+    $this->get('/{id:[0-9]+}','Usuario_tokenController:buscarPorId');
+    $this->delete('/{id:[0-9]+}','Usuario_tokenController:deletar');
+})
+;
+
 
 $app->run();
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Dez-2019 às 02:45
+-- Tempo de geração: 04-Dez-2019 às 09:25
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.3.9
 
@@ -62,24 +62,12 @@ INSERT INTO `animais` (`id_animal`, `desc_animal`, `id_raca`, `dta_nasc`, `sexo`
 --
 
 CREATE TABLE `consulta` (
-  `id_consult` int(11) NOT NULL,
+  `id_consulta` int(11) NOT NULL,
   `dta_consult` date NOT NULL,
   `id_pessoa` varchar(50) NOT NULL,
-  `status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `pessoa`
---
-
-CREATE TABLE `pessoa` (
-  `id_pessoa` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `cpf` int(11) NOT NULL,
-  `sexo` int(1) NOT NULL,
-  `id_animal` int(11) DEFAULT NULL
+  `status` int(1) NOT NULL,
+  `hr_consulta` int(10) DEFAULT NULL,
+  `id_animal` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -132,7 +120,7 @@ INSERT INTO `produtos` (`id`, `nome`, `imagem`, `descricao`, `uso`) VALUES
 
 CREATE TABLE `raca` (
   `id_raca` int(11) NOT NULL,
-  `desc` varchar(50) NOT NULL,
+  `desc_raca` varchar(50) NOT NULL,
   `id_tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -140,7 +128,7 @@ CREATE TABLE `raca` (
 -- Extraindo dados da tabela `raca`
 --
 
-INSERT INTO `raca` (`id_raca`, `desc`, `id_tipo`) VALUES
+INSERT INTO `raca` (`id_raca`, `desc_raca`, `id_tipo`) VALUES
 (1, 'labrador', 1),
 (2, 'ragdoll', 2);
 
@@ -161,7 +149,8 @@ CREATE TABLE `tipo_animal` (
 
 INSERT INTO `tipo_animal` (`id_tipo`, `desc_tipo`) VALUES
 (1, 'cachorro'),
-(2, 'gato');
+(2, 'gato'),
+(3, 'repities');
 
 -- --------------------------------------------------------
 
@@ -192,12 +181,6 @@ INSERT INTO `usuarios` (`id`, `nome`, `login`, `senha`) VALUES
 --
 ALTER TABLE `animais`
   ADD PRIMARY KEY (`id_animal`);
-
---
--- Índices para tabela `pessoa`
---
-ALTER TABLE `pessoa`
-  ADD PRIMARY KEY (`id_pessoa`);
 
 --
 -- Índices para tabela `produtos`
@@ -232,13 +215,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `animais`
 --
 ALTER TABLE `animais`
-  MODIFY `id_animal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT de tabela `pessoa`
---
-ALTER TABLE `pessoa`
-  MODIFY `id_pessoa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_animal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -256,7 +233,7 @@ ALTER TABLE `raca`
 -- AUTO_INCREMENT de tabela `tipo_animal`
 --
 ALTER TABLE `tipo_animal`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
