@@ -51,8 +51,16 @@ $app->group('/api/cliente', function(){
 })
 ;
 
+$app->group('/api/consulta', function(){
+    $this->get('','ConsultaController:listar');
+    $this->post('','ConsultaController:inserir');
+    $this->get('/{id:[0-9]+}','ConsultaController:buscarPorId');
+    $this->put('/{id:[0-9]+}','ConsultaController:atualizar');
+    $this->delete('/{id:[0-9]+}','ConsultaController:deletar');
+})
+;
+
 $app->group('/api/usuario_token', function(){
-    
     $this->post('','Usuario_tokenController:inserir');
     $this->get('/{id:[0-9]+}','Usuario_tokenController:buscarPorId');
     $this->delete('/{id:[0-9]+}','Usuario_tokenController:deletar');

@@ -3,7 +3,6 @@
 
     class ClienteDAO
     {
-
         public function inserir(Cliente $cliente) {
             $qInserir = "INSERT INTO cliente(nome,cpf,sexo,email,endereco,numero,complemente) VALUES (:nome,:cpf,:sexo,:email,:endereco,:numero,:complemente)";            
             $pdo = PDOFactory::getConexao();
@@ -65,5 +64,27 @@
            $result = $comando->fetch(PDO::FETCH_OBJ);
            return new Cliente($result->id_cliente,$result->nome,$result->cpf,$result->sexo,$result->email,$result->endereco,$result->numero,$result->complemente);
        }
+      
+       //public function inserir(Cliente $cliente) {
+        //$qInserir = "INSERT INTO pessoa(nome,cpf,sexo) VALUES (:nome,:cpf,:sexo)";
+        //$qGet = "SELECT * FROM pessoa WHERE cpf='$cpf'";         
+        //$pdo = PDOFactory::getConexao();
+        //$comando = $pdo->prepare($qInserir);
+        //$comandoGet = $pdo->prepare($qGet);
+       // $numeros = mysql_num_rows ($query);
+       // if ($numeros>"0"){
+          //  echo "Tem uma informação cadastrada!";   //Sucesso
+       // }
+        //else{
+        //    echo "Não tem nenhuma informação cadastrada!"; //Erro
+       // }
+       // $comando->bindParam(":nome",$cliente->nome);
+        //$comando->bindParam(":cpf",$cliente->cpf);
+       // $comando->bindParam(":sexo",$cliente->sexo);
+       // $comando->execute();
+        //$cliente->id_pessoa = $pdo->lastInsertId();
+        //return $pessoa;
+        //}
+
     }
 ?>
