@@ -12,8 +12,9 @@ var comboRacas = document.getElementById("cmbRacas");
 body.onload = function () {
 
     carregarAnimais();
-    carregarRacas();
     carregarEspecies();
+    carregarRacas();
+    
 
 }
 
