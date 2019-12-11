@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>App Motores</title>
+</head>
+
+
+<body>
+
+
+    <form class="needs-validation" novalidate>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltip01">Primeiro nome</label>
+      <input type="text" class="form-control" id="validationTooltip01" placeholder="Nome" value="Mark" required>
+      <div class="valid-tooltip">
+        Tudo certo!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltip02">Sobrenome</label>
+      <input type="text" class="form-control" id="validationTooltip02" placeholder="Sobrenome" value="Otto" required>
+      <div class="valid-tooltip">
+        Tudo certo!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltipUsername">Usuário</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+        </div>
+        <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Usuário" aria-describedby="validationTooltipUsernamePrepend" required>
+        <div class="invalid-tooltip">
+          Por favor, escolha um usuário válido e único.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationTooltip03">Cidade</label>
+      <input type="text" class="form-control" id="validationTooltip03" placeholder="Cidade" required>
+      <div class="invalid-tooltip">
+        Por favor, informe uma cidade válida.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationTooltip04">Estado</label>
+      <input type="text" class="form-control" id="validationTooltip04" placeholder="Estado" required>
+      <div class="invalid-tooltip">
+        Por favor, informe um estado válido.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationTooltip05">CEP</label>
+      <input type="text" class="form-control" id="validationTooltip05" placeholder="CEP" required>
+      <div class="invalid-tooltip">
+        Por favor, informe um CEP válido.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Enviar</button>
+</form>
+        
+
+
+
+
+    <main>
+        <h2>Cadastro de Motores</h2>
+
+        <form id="formulario">
+            <label for="txtnome">Nome:</label>
+            <input type="text" id="txtnome">
+            <br/>
+            <label for="txtimagem">Imagem:</label>
+            <input type="text" id="txtimagem">
+            <br/>
+            <label for="txtdescricao">Descrição:</label>
+            <input type="text" id="txtdescricao">
+            <br/>
+            <label for="txtuso">Uso:</label>
+            <input type="text" id="txtuso">
+            <br/>
+            <input type="hidden" id="txtid">
+            <br/>
+            <input type="submit" id="btnsalvar" value="Salvar">
+            <input type="reset" value="Cancelar">
+            <br/>
+        </form>
+        <h2>Tabela de Motores</h2>
+        <div id="tabela">
+
+            ...
+            
+        </div>
+    </main>
+</body>
+<script src="js/motores.js"></script>
+
+</html>

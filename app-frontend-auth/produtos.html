@@ -1,35 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/styles.css">
         <title>Cadastro Produtos</title>
     </head>
     <body>
-        <main>
 
-            <button id="logoutBtn">Logout</button>
+            <header class="test" >
+                <h1 id="test">test</h1>
+            </header>
+
+
+
+       
+
+             <table class="clssheader">
+            <td>
+                <a href="Cliente.html">Cliente</a>
+            </td>
+             <td>
+                <a href="animais.html">Animais</a>
+            </td>
+            <td>
+                <a href="produtos.html">Produtos</a>
+            </td>
+             </table>
+            
+       
+
+ 
+
+    
+             <img src="">
+
+
+    
+
+        <div id="DivA">
+         <div border="0" class="form-row">
+        <table>
+            <td>
 
             <h2>Cadastro de Produtos</h2>          
             <form id="formulario">
                 <label for="txtnome">Nome:</label>
-                <input type="text" id="txtnome">
+                <input class="form-control" type="text" id="txtnome">
+
                 <label for="txtimagem">Imagem:</label>
-                <input type="text" id="txtimagem">
+                <input class="form-control" type="text" id="txtimagem">
+
                 <label for="txtdescricao">Descrição:</label>
-                <input type="text" id="txtdescricao">
+                <input class="form-control" type="text" id="txtdescricao">
+
                 <label for="txtuso">Uso:</label>
-                <input type="text" id="txtuso">
+                <input class="form-control" type="text" id="txtuso">
+
                 <input type="hidden" id="txtid">
-                <input type="submit" id="btnsalvar" value="Salvar">
-                <input type="reset" value="Cancelar">
+                <input class="btn btn-primary" type="submit" id="btnsalvar" value="Salvar">
+                <input class="btn btn-primary" type="reset" value="Cancelar">
                 <br/>
             </form>
-            
+        </div>
+        </div>
+        </td>
+
+        <td>
+     <div id="DivLateral"> 
+       <div class="form-row">
+        
             <h2>Tabela de Produtos</h2>
             <div id="tabela"></div>
-        
+             <button class="btn btn-primary" id="logoutBtn">Logout</button>
+        </div>
+        </div>
         </main>
+        </td>
+        </table>
 
     </body>
 
