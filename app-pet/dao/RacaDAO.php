@@ -53,5 +53,16 @@
            $result = $comando->fetch(PDO::FETCH_OBJ);
            return new Raca($result->id_raca,$result->desc_raca,$result->id_tipo);
        }
+
+
+       public function buscarPorIdEspecie($id_tipo) {
+        $query = 'SELECT * FROM raca WHERE id_raca=:id_tipo';		
+        $pdo = PDOFactory::getConexao(); 
+        $comando = $pdo->prepare($query);
+        $comando->bindParam (':id_raca', $id_raca);
+        $comando->execute();
+        $result = $comando->fetch(PDO::FETCH_OBJ);
+        return new Raca($result->id_raca,$result->desc_raca,$result->id_tipo);
+    }
     }
 ?>
