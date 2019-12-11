@@ -21,7 +21,7 @@
 
         public function inserir( $request, $response, $args) {
             $var = $request->getParsedBody();
-            $consulta = new Consulta(0, $var['dta_consult'], $var['id_pessoa'], $var['status'], $var['hr_consulta'], $var['id_animal'])
+            $consulta = new Consulta(0, $var['dta_consult'], $var['id_pessoa'], $var['status'], $var['hr_consulta'], $var['id_animal']);
             $dao = new ConsultaDAO;    
             $consulta = $dao->inserir($consulta);
             $response = $response->withJson($consulta);
@@ -33,7 +33,7 @@
         public function atualizar($request, $response, $args) {
             $id_consulta = (int) $args['id'];
             $var = $request->getParsedBody();
-            $consulta = new Consulta(0, $var['dta_consult'], $var['id_pessoa'], $var['status'], $var['hr_consulta'], $var['id_animal'])
+            $consulta = new Consulta(0, $var['dta_consult'], $var['id_pessoa'], $var['status'], $var['hr_consulta'], $var['id_animal']);
             $dao = new ConsultaDAO;    
             $dao->atualizar($consulta);
             $response = $response->withJson($consulta);
