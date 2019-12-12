@@ -10,8 +10,7 @@ function validaAcesso() {
 
 // destruir a sessão ativa
 function encerraAcesso() {
-    // TO DO: apagar o token do banco de dados
-    // Apagando o token da sessão local do navegador
+ 
     sessionStorage.clear();
     location.href = "login.html";
 }
