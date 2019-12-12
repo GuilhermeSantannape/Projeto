@@ -32,6 +32,7 @@ $app->group('/api/raca', function(){
     $this->get('/{id:[0-9]+}','RacaController:buscarPorId');
     $this->put('/{id:[0-9]+}','RacaController:atualizar');
     $this->delete('/{id:[0-9]+}','RacaController:deletar');
+    
 })
 ;
 
