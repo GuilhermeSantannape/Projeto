@@ -9,17 +9,31 @@
     <title> Login</title>
 </head>
 <body>
-    <h1>Autenticação</h1>
 
-    <section id="login">
-        <label>Usuário</label>
-        <input class="form-control" type="text" id="username" required>
-        <label>Senha</label>
-        <input class="form-control"  id="password" type="password" required>
-        <button class="btn btn-primary" id="buscarTokenBtn">Enviar</button>
-        <div id="mensagem"></div>
-    </section>
 
+
+
+      <div class="wrapper fadeInDown">
+  <div id="formContent">
+                <h1>Autenticação</h1>
+
+                <section id="login">
+                    <label>Usuário</label>
+                    <input class="form-control" type="text" id="username" required>
+                    <label>Senha</label>
+                    <input class="form-control"  id="password" type="password" required>
+                    
+                    <input type="submit" class="fadeIn fourth" value="Log In"  id="buscarTokenBtn">
+               
+                    <div id="mensagem"></div>
+                </section>
+
+
+                <script src="js/auth.js"></script>
+
+ 
+
+   
 
     <script src="js/auth.js"></script>
 </body>
