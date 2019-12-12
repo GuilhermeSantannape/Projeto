@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto topnav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="Cliente.html">Cliente <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="Cliente.html" requ>Cliente <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="animais.html">Animais</a>
@@ -52,16 +52,21 @@
             
             <h2>Cadastro de Animais</h2>          
             <form id="formulario">
-                <label for="txtnome">Nome:</label>
-                <input type="text" id="txtnome">
+                <label for="txtnome" >Nome:</label>
+                <input type="text" id="txtnome" required>
                 <label for="txtespecie">Especie:</label>
                 <select id="cmbespecie"></select>
                 <label for="txtraca">Raça:</label>
                 <select id="cmbRacas"></select>
-                <label for="txtdata">Data de nascimento:</label>
-                <input type="date" id="txtdata">
+                <label for="txtdata"required>Data de nascimento:</label>
+                <input type="date" id="txtdata" required>
                 <label for="txtsexo">Sexo:</label>
-                <input type="text" id="txtsexo">
+                <select id=txtsexo required>
+                    <option>Macho</option>
+                    <option>Femea</option>
+                    
+                </select>
+
                 <input type="hidden" id="txtid_animal">
                 <input type="submit" id="btnsalvar" value="Salvar">
                 <input type="reset" value="Cancelar">
