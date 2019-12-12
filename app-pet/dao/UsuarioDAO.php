@@ -25,5 +25,9 @@ class UsuarioDAO {
 		else
 			return new Usuario($result->id, $result->nome, $result->login, $result->senha);
 	}
+
+	
+
+	
 }
 ?>

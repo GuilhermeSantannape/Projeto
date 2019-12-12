@@ -65,5 +65,6 @@
            $result = $comando->fetch(PDO::FETCH_OBJ);
            return new Cliente($result->id_cliente,$result->nome,$result->cpf,$result->sexo,$result->email,$result->endereco,$result->numero,$result->complemente);
        }
+       
     }
 ?>

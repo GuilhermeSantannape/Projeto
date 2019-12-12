@@ -55,7 +55,7 @@
            $comando->bindParam (':id_animal', $id_animal);
            $comando->execute();
            $result = $comando->fetch(PDO::FETCH_OBJ);
-           return new Animal($result->id_animal,$result->desc_animal,$result->id_raca,$result->dta_nasc,$result->sexo);
+           return new Animal($result->id_animal, $result->desc_animal, $result->id_raca, $result->dta_nasc,$result->sexo);
        }
     }
 ?>

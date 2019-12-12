@@ -26,6 +26,8 @@
            $result = $comando->fetch(PDO::FETCH_OBJ);
            return new Especie($result->id_tipo,$result->desc_tipo);
        }
+
+       
      
     }
 ?>
